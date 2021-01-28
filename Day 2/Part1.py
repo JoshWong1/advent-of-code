@@ -1,24 +1,24 @@
-def isValid(min, max, letter, a):
+def isValid(low, high, letter, a):
     num = 0
     for c in a:
         if c == letter:
             num += 1
-    if num >= min and num <= max:
+    if low <= num <= high:
         return True
     else:
         return False
     
 if __name__ == "__main__":
     count = 0
-    l = open("input2.txt", "r").readlines()
+    l = open("input.txt", "r").readlines()
     for line in l:
         items = line.split()
         nums = items[0].split("-")
-        min = int(nums[0])
-        max = int(nums[1])
+        low = int(nums[0])
+        high = int(nums[1])
         letter = items[1][0]
         a = items[2]
      
-        if isValid(min, max, letter, a):
+        if isValid(low, high, letter, a):
             count += 1
     print(count)
