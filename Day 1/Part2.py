@@ -1,5 +1,4 @@
 if __name__ == "__main__":
- if __name__ == "__main__":
     l = open("input.txt", "r").readlines()
     for i in l:
         s = set()
