@@ -10,5 +10,5 @@ def countTrees(x, y, l):
     return numTrees   
 
 if __name__ == "__main__":
-    l = [line.strip() for line in open("input3.txt", "r")]
+    l = [line.strip() for line in open("input.txt", "r")]
     print(countTrees(3, 1, l))
