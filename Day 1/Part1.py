@@ -5,6 +5,7 @@ if __name__ == "__main__":
     for i in l:
         n = int(i)
         if n in s:
+            print((N-n) * n)
             break
         else:
             s.add(N - n)
