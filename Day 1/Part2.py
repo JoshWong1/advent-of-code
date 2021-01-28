@@ -1,15 +1,16 @@
 if __name__ == "__main__":
-    f = open("input.txt", "r")
-    l = f.readlines()
+    l = open("input.txt", "r").readlines()
     for i in l:
-        d = {}
+        s = set()
         j = int(i)
         total = 2020 - j
-        for item in l:
-            item = int(item)
-            if not(item in d):
-                d[total - item] = 1
+        for num in l:
+            n = int(num)
+            if not(n in s):
+                s.add(total - n)
             else:
-                x = (total - item) * item  * j
-                print(x)
+                print((total - n) * n  * j)
                 break
+        else:
+            continue
+        break
