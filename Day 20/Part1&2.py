@@ -1,6 +1,33 @@
 import math
 import copy
 
+class Tile:
+    def __init__(self, num, grid):
+        self.num = num
+        self.grid = grid
+        self.update()
+   
+    def display(self):
+        for item in self.grid:
+            print(item)
+    
+    # Rotates tile 90 degrees clockwise
+    def rotate(self):         
+        self.grid = rotateGrid(self.grid)
+        self.update()
+       
+    # Flips tile
+    def flip(self):          
+        self.grid = flipGrid(self.grid)
+        self.update()
+    
+    # Updates left, right, bottom, and top edges of tile
+    def update(self):
+        self.top = list(self.grid[0])
+        self.bottom = list(self.grid[-1])
+        self.left = [s[0] for s in self.grid]
+        self.right = [s[-1] for s in self.grid]
+        
 # Counts number of hash symbols in given grid
 def count(l):
     total = 0
@@ -61,35 +88,7 @@ def joinTiles(arrangement):
                 s += arrangement[i][j].grid[k]
             newL.append(s)
     return newL      
-            
-
-class Tile:
-    def __init__(self, num, grid):
-        self.num = num
-        self.grid = grid
-        self.update()
-   
-    def display(self):
-        for item in self.grid:
-            print(item)
-    
-    # Rotates tile 90 degrees clockwise
-    def rotate(self):         
-        self.grid = rotateGrid(self.grid)
-        self.update()
-       
-    # Flips tile
-    def flip(self):          
-        self.grid = flipGrid(self.grid)
-        self.update()
-    
-    # Updates left, right, bottom, and top edges of tile
-    def update(self):
-        self.top = list(self.grid[0])
-        self.bottom = list(self.grid[-1])
-        self.left = [s[0] for s in self.grid]
-        self.right = [s[-1] for s in self.grid]
-            
+                      
 # Finds first empty spot in grid to place a tile if it exists   
 def findEmpty(l):
     for i in range(len(l)):
