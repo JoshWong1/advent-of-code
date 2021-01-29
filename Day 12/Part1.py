@@ -1,6 +1,6 @@
 if __name__ == "__main__":
-    with open("input.txt", "r") as l:
-        l = [[line[0], int(line.strip()[1:])] for line in l]
+    
+    l = [[line[0], int(line.strip()[1:])] for line in open("input.txt", "r")]
     
     dirs = {'N': [0,1], 'S': [0,-1], 'E': [1,0], 'W': [-1,0]}
     direction = 0
