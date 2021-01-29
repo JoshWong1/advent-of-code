@@ -4,25 +4,19 @@ def valid(n, low1, high1, low2, high2):
    return low1 <= n <= high1 or low2 <= n <= high2
 
 if __name__ == "__main__":
-   items = open("input.txt", "r").read().split("\n\n")
-   rules = {}
-   invalid = []
-   tickets = items[2].split("\n")[1:]
-   tickets2 = []
-   order = []
+   items = open("input.txt", "r").read().split("\n\n")      
    
    #my ticket   
    myseat = items[1].split("\n")[1].strip().split(",")
 
    #create list of other tickets
-   for s in tickets:
-      l = []
-      nums = s.split(",")
-      for n in nums:
-         l.append(int(n))
-      tickets2.append(l)
+   ts = items[2].split("\n")[1:]
+   tickets = []
+   for s in ts:     
+      tickets.append([int(n) for n in s.split(",")])
 
    #create dict rules: key = rule name, value = list of min,max
+   rules = {}
    for line in items[0].split("\n"):
       l = line.split(":")
       n1 = l[1].strip().split("or")[0].strip().split("-")
@@ -30,7 +24,8 @@ if __name__ == "__main__":
       rules[l[0]] = [n1, n2]
 
    #find invalid tickets and remove them from list of tickets
-   for ticket in tickets2:  
+   invalid = []
+   for ticket in tickets:  
       for n in ticket:  
          for key in rules:
             if valid(n, int(rules[key][0][0]), int(rules[key][0][1]), int(rules[key][1][0]), int(rules[key][1][1])):
@@ -40,13 +35,14 @@ if __name__ == "__main__":
             break
             
    for item in invalid:
-      tickets2.remove(item)
+      tickets.remove(item)
   
    #find all possible rule, index assignments 
-   for i in range(len(tickets2[0])):
+   order = []
+   for i in range(len(tickets[0])):
       order.append([])
       for key in rules:  
-         for t in tickets2:
+         for t in tickets:
             n = t[i]
             if not valid(n, int(rules[key][0][0]), int(rules[key][0][1]), int(rules[key][1][0]), int(rules[key][1][1])):          
                break
