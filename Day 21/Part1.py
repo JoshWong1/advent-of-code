@@ -6,8 +6,8 @@ if __name__ == "__main__":
     l = [[set(item[0].split()), set(item[1].split(", "))] for item in l]
  
     ingredients = set()
-    for item in l:
-        ingredients = ingredients.union(item[0])
+    for ingrs, _ in l:
+        ingredients = ingredients.union(ingrs)
      
     d = {}
  
