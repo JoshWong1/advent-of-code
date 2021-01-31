@@ -1,9 +1,17 @@
+import time
 class Node:
     def __init__(self, data):
         self.val = data
-        self.next = None      
+        self.next = None     
+        
+def nextDest(curr, temp, low, high):
+    dest = curr        
+    while True:  
+        dest = dest - 1 if dest > low else high
+        if dest not in temp: return dest
             
 if __name__ == "__main__":
+    start = time.time()
     l = list(open("input.txt", "r").read())
     l = [int(n) for n in l]           
     Nodes = {}
@@ -34,17 +42,8 @@ if __name__ == "__main__":
         
         currentNode.next = removeNodeEnd.next
         
-        temp = [removeNodeStart.val, removeNodeStart.next.val, removeNodeEnd.val]
-        
-        dest = currentNode.val - 1
-        if dest == 0:
-            dest = high
-            
-        while dest in temp:  
-            if dest > low:
-                dest -= 1
-            else:
-                dest = high
+        temp = [removeNodeStart.val, removeNodeStart.next.val, removeNodeEnd.val]        
+        dest = nextDest(currentNode.val, temp, low, high)
         
         j = Nodes[dest]
         removeNodeEnd.next = j.next
@@ -52,3 +51,4 @@ if __name__ == "__main__":
         currentNode = currentNode.next      
      
     print(Nodes[1].next.val * Nodes[1].next.next.val)
+    print(time.time() - start)
