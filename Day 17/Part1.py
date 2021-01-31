@@ -47,7 +47,6 @@ if __name__ == "__main__":
         for j in range(ystart, yend):
             grid[6][j][i] = l[j - ystart][i - xstart]
             
-    total = 0
     for i in range(6):
         grid = processCycle(grid)
     
