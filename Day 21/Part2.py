@@ -5,8 +5,7 @@ if __name__ == "__main__":
     l = [i.split(" ( ") for i in l]
     l = [[set(ingrs.split()), set(alrgs.split(", "))] for ingrs, alrgs in l]
      
-    d = {}
- 
+    d = {} 
     for ingrs, alrgs in l:
         for alrg in alrgs:
             d[alrg] = d[alrg].intersection(ingrs) if alrg in d else ingrs    
