@@ -19,6 +19,5 @@ if __name__ == "__main__":
   
     s = 0           
     for ingrs, _ in l:
-        for i in ingrs:            
-            s += i in ingredients
+        s += len(ingrs.intersection(ingredients))
     print(s)
