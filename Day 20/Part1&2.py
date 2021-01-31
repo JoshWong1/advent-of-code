@@ -151,19 +151,13 @@ if __name__ == "__main__":
         l2.append(l3)
     
     # Creates list of tiles given input
-    tiles = []
-    for item in l2:
-        grid = item[1:]
-        num = item[0]
-        tiles.append(Tile(num, grid))
+    tiles = [Tile(t[0], t[1:]) for t in l2]
     
     # Initialize arrangement of tiles to a list of zeroes
     arrangement = []
     size = int(math.sqrt(len(tiles)))
     for i in range(size):
-        a= []
-        for j in range(size):
-            a.append(0)
+        a = [0 for j in range(size)]
         arrangement.append(a)
     
     # Finds correct arrangement of tiles, Part 1 solution here    
