@@ -144,21 +144,16 @@ if __name__ == "__main__":
 
     # Parsing input
     l = open("input.txt", "r").read().split("\n\n")
-    l2 = []
-    for tiles in l:
-        l3 = tiles.split("\n")
-        l3 = [int(l3[0].split()[1].replace(":", ""))] + l3[1:]
-        l2.append(l3)
-    
+    l = [tile.split("\n") for tile in l]
+
     # Creates list of tiles given input
-    tiles = [Tile(t[0], t[1:]) for t in l2]
+    tiles = [Tile(int(tile[0].replace("Tile ", "").replace(":", "")), tile[1:]) for tile in l]
     
     # Initialize arrangement of tiles to a list of zeroes
     arrangement = []
     size = int(math.sqrt(len(tiles)))
     for i in range(size):
-        a = [0 for j in range(size)]
-        arrangement.append(a)
+        arrangement.append([0 for j in range(size)])
     
     # Finds correct arrangement of tiles, Part 1 solution here    
     solve(tiles, arrangement, 0) 
