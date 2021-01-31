@@ -9,8 +9,7 @@ if __name__ == "__main__":
     for ingrs, _ in l:
         ingredients = ingredients.union(ingrs)
      
-    d = {}
- 
+    d = {} 
     for ingrs, alrgs in l:
         for alrg in alrgs:
             d[alrg] = d[alrg].intersection(ingrs) if alrg in d else ingrs    
