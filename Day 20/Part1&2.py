@@ -145,8 +145,6 @@ if __name__ == "__main__":
     # Parsing input
     l = open("input.txt", "r").read().split("\n\n")
     l = [tile.split("\n") for tile in l]
-
-    # Creates list of tiles given input
     tiles = [Tile(int(tile[0].replace("Tile ", "").replace(":", "")), tile[1:]) for tile in l]
     
     # Initialize arrangement of tiles to a list of zeroes
