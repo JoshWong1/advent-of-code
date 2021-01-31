@@ -1,4 +1,3 @@
-import time
 class Node:
     def __init__(self, data):
         self.val = data
@@ -11,7 +10,6 @@ def nextDest(curr, temp, low, high):
         if dest not in temp: return dest
             
 if __name__ == "__main__":
-    start = time.time()
     l = list(open("input.txt", "r").read())
     l = [int(n) for n in l]           
     Nodes = {}
@@ -51,4 +49,3 @@ if __name__ == "__main__":
         currentNode = currentNode.next      
      
     print(Nodes[1].next.val * Nodes[1].next.next.val)
-    print(time.time() - start)
