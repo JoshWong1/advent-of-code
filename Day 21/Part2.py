@@ -3,7 +3,7 @@ if __name__ == "__main__":
         l = [line.replace("contains", "").replace(")", "").strip() for line in f]
 
     l = [i.split(" ( ") for i in l]
-    l = [[set(item[0].split()), set(item[1].split(", "))] for item in l]
+    l = [[set(ingrs.split()), set(alrgs.split(", "))] for ingrs, alrgs in l]
      
     d = {}
  
