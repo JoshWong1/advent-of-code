@@ -11,15 +11,15 @@ if __name__ == "__main__":
      
     d = {}
  
-    for ings, algs in l:
-        for alg in algs:
-            d[alg] = d[alg].intersection(ings) if alg in d else ings    
+    for ingrs, alrgs in l:
+        for alrg in alrgs:
+            d[alrg] = d[alrg].intersection(ingrs) if alrg in d else ingrs    
     
     for item in d.values():
         ingredients = ingredients.difference(item)
   
     s = 0           
-    for ings, _ in l:
-        for i in ings:            
+    for ingrs, _ in l:
+        for i in ingrs:            
             s += i in ingredients
     print(s)
