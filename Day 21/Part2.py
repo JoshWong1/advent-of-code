@@ -8,7 +8,7 @@ if __name__ == "__main__":
     d = {} 
     for ingrs, alrgs in l:
         for alrg in alrgs:
-            d[alrg] = d[alrg].intersection(ingrs) if alrg in d else ingrs    
+            d[alrg] = d[alrg] & ingrs if alrg in d else ingrs    
 
     ls = [[key, d[key]] for key in d]    
     length = len(ls)
@@ -19,7 +19,7 @@ if __name__ == "__main__":
         ingr = ingrs.pop()
         d[alrg] = ingr
         for k in ls:
-            k[1] = k[1].difference(ingr)
-    
+            k[1] = k[1] - {ingr}
+        
     s = [d[key] for key in sorted(d.keys())]        
     print(','.join(s))
