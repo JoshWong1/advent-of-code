@@ -7,17 +7,17 @@ if __name__ == "__main__":
  
     ingredients = set()
     for ingrs, _ in l:
-        ingredients = ingredients.union(ingrs)
+        ingredients = ingredients | ingrs
      
     d = {} 
     for ingrs, alrgs in l:
         for alrg in alrgs:
-            d[alrg] = d[alrg].intersection(ingrs) if alrg in d else ingrs    
+            d[alrg] = d[alrg] & ingrs if alrg in d else ingrs    
     
     for item in d.values():
-        ingredients = ingredients.difference(item)
+        ingredients = ingredients - item
   
     s = 0           
     for ingrs, _ in l:
-        s += len(ingrs.intersection(ingredients))
+        s += len(ingrs & ingredients)
     print(s)
