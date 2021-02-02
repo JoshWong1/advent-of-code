@@ -14,18 +14,18 @@ def buildReg(rules, value):
     return reg
     
 if __name__ == "__main__":
-    l = open("input.txt", "r").read().split("\n\n")
-    m = l[1].split()
-    d = {}
-    
-    for line in l[0].split("\n"):
-        items = line.split(":")
-        d[items[0]] = items[1].strip()
+    l, m = open("input.txt", "r").read().split("\n\n")
+    msgs = m.split()
+        
+    d = {}    
+    for line in l.split("\n"):
+        key, rules = line.split(":")
+        d[key] = rules.strip()
 
     reg = '^' + buildReg(d, d['0']) + '$'
 
     tol = 0
-    for msg in m:
+    for msg in msgs:
         if re.search(reg, msg):
             tol += 1
     print(tol)
