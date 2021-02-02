@@ -14,13 +14,13 @@ def buildReg(rules, value,):
     return reg
 
 if __name__ == "__main__":
-    l = open("input.txt", "r").read().split("\n\n")
-    m = l[1].split()
-    d = {}
+    l, m = open("input.txt", "r").read().split("\n\n")
+    msgs = m.split()
     
-    for line in l[0].split("\n"):
-        items = line.split(":")
-        d[items[0]] = items[1].strip()
+    d = {}    
+    for line in l.split("\n"):
+        key, rules = line.split(":")
+        d[key] = rules.strip()
         
     d['8'] = '42 | 42 8'
     d['11'] = '42 31 | 42 11 31' 
@@ -30,8 +30,7 @@ if __name__ == "__main__":
     reg = '^(' + reg42 + ')+(' + reg31 + ')+$'
 
     tol = 0
-
-    for msg in m:
+    for msg in msgs:
         if len(msg) % 8 == 0 and re.search(reg, msg):
             length = int(len(msg)/8)
             ms = [msg[i*8:i*8+8] for i in range(length)]
@@ -40,7 +39,7 @@ if __name__ == "__main__":
                 if re.search(reg31, item):
                     s += 1
                 else:
-                    break
-            if s < length/2:
-                tol += 1
+                    break                
+            tol += s < length/2
+                
     print(tol)
