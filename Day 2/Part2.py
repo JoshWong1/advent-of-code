@@ -1,21 +1,13 @@
 def isValid(low, high, letter, a):
-    if a[low - 1] == letter and a[high - 1] != letter:
-        return True  
-    elif a[high - 1] == letter and a[low - 1] != letter:   
-        return True
-    return False
+    return (a[low - 1] == letter and a[high - 1] != letter) or \
+           a[high - 1] == letter and a[low - 1] != letter
 
 if __name__ == "__main__":
+    l = [line.split() for line in open("input.txt", "r").readlines()]  
+    
     count = 0
-    l = open("input.txt", "r").readlines()
-    for line in l:
-        items = line.split()
-        nums = items[0].split("-")
-        low = int(nums[0])
-        high = int(nums[1])
-        letter = items[1][0]
-        a = items[2]
-     
-        if isValid(low, high, letter, a):
-            count += 1
+    for r, c, s in l:       
+        low, high = r.split("-")    
+        if isValid(int(low), int(high), c[0], s): count += 1
+           
     print(count)
