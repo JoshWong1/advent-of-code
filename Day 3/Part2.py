@@ -1,10 +1,9 @@
   
 def countTrees(x, y, l):
-    i = 0
-    j = 0
-    numTrees = 0
+    i, j, numTrees = 0, 0, 0
+    length = len(l[0])
     while j <= len(l) - 2:
-        i = (i + x) % (len(l[j]))
+        i = (i + x) % (length)
         j += y
         if l[j][i] == '#':
             numTrees += 1
