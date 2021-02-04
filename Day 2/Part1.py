@@ -5,9 +5,9 @@ def isValid(low, high, letter, s):
         
     return low <= num <= high
     
-if __name__ == "__main__":
-    count = 0
+if __name__ == "__main__": 
     l = [line.split() for line in open("input.txt", "r").readlines()]
+    count = 0
     for r, c, s in l:       
         low, high = r.split("-")     
         count += isValid(int(low), int(high), c[0], s)
