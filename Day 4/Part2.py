@@ -1,6 +1,6 @@
 import re
 def isValid(tag, value):
-    eyeColors = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
+    eyeColors = {'amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'}
     if tag == 'byr':
         return 1920 <= int(value) <= 2002
     elif tag == 'iyr':
@@ -26,10 +26,8 @@ if __name__ == "__main__":
     
     valid = 0    
     for passport in l:
-        tags = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
-        eyeColors = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
-        items = passport.split()
-        for item in items:
+        tags = {'byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'}
+        for item in passport.split():
             tag = item[0:3]            
             if tag in tags:
                 val = item[4:]  
