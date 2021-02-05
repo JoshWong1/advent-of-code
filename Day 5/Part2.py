@@ -13,21 +13,15 @@ def findRow(s, low, high):
         return findRow(s[1:], mid + 1, high)
     
 if __name__ == "__main__":
-    result = 0
     l = open("input.txt", "r").readlines()
-    ids = []
     
+    ids = set()    
     for seat in l:        
-        row = seat[0:7]
-        col = seat[7:10]
-        r = findRow(row, 0, 127)
-        c = findRow(col, 0, 7)
-        ide = r * 8 + c
-        ids.append(ide)
+        row, col = findRow(seat[0:7], 0, 127), findRow(seat[7:10], 0, 7)
+        ide = row * 8 + col
+        ids.add(ide)
 
-    for i in range(0, 1028):
-        a = i - 1
-        b = i + 1
-        if a in ids and b in ids and i not in ids:
+    for i in range(min(ids), max(ids)):
+        if i not in ids:
             print(i)
             break
