@@ -1,12 +1,9 @@
 def findRow(s, low, high):
     if len(s) <= 1:
-        if s == "F" or s == "L":
-            return low      
-        return high
+        return low if s in "FL" else high
+    
     mid = (high + low) // 2
-    if s[0] == "F" or s[0] == "L":
-        return findRow(s[1:], low, mid)    
-    return findRow(s[1:], mid + 1, high)
+    return findRow(s[1:], low, mid) if s[0] in "FL" else findRow(s[1:], mid + 1, high)
     
 if __name__ == "__main__":
     l = open("input.txt", "r").readlines()
