@@ -15,8 +15,7 @@ if __name__ == "__main__":
    for line in l:
       firstBag, bags = line.split(" bags contain ")  
       for bag in bags.split(", "):
-         b = bag.split()
-         color = b[1] + " " + b[2]
+         color = bag[2:].split(" bag")[0]
          if color not in d:
             d[color] = {firstBag}
          else:
