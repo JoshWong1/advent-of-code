@@ -12,13 +12,8 @@ if __name__ == "__main__":
    d = {}
    
    for line in l:
-      items = line.split("bags contain")
-      firstBag = items[0].strip()
-      sub = []
-      for i in items[1].split(", "):
-         if not(i.strip()[0] == 'n'):            
-            sub.append((i[2:].strip().split(" bag")[0], int(i.strip()[0])))       
-      d[firstBag] = sub
- 
+      firstBag, bags = line.split(" bags contain ")
+      d[firstBag] = [(bag[2:].split(" bag")[0], int(bag[0])) for bag in bags.split(", ") if not bag[0] == 'n']
+
    n = findNumBags(d,'shiny gold')
    print(n)
