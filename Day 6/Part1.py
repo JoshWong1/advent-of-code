@@ -1,6 +1,7 @@
-if __name__ == "__main__":
+if __name__ == "__main__":    
+    groups = open("input.txt", "r").read().split("\n\n")    
     sol = 0
-    groups = open("input.txt", "r").read().split("\n\n")
+    
     for group in groups:
         found = set()
         for c in group:
