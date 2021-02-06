@@ -6,7 +6,6 @@ def findNumBags(d, color):
       total += c[1] + findNumBags(d, c[0]) * c[1]
    return total     
         
-
 if __name__ == "__main__":
    l = open("input.txt", "r").readlines()    
    d = {}
