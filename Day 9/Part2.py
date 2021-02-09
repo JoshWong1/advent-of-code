@@ -9,7 +9,7 @@ def findSet(l, target):
             if tol == target: return queue
     
 if __name__ == "__main__":    
-    nums = [int(n) for n in open("input9.txt", "r").readlines()]
+    nums = [int(n) for n in open("input.txt", "r").readlines()]
     target = 144381670
     ans = findSet(nums, target)
     print(min(ans) + max(ans)) 
