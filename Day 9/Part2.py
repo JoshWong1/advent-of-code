@@ -1,17 +1,15 @@
 def findSet(l, target):
-    j = 0
-    while j < len(l):
-        total = 0
+    for j in range(2, len(l)):
+        queue = l[0:j]
+        tol = sum(queue)
         for i in range(j, len(l)):
-            total += int(l[i])
-            if total == target:
-                return l[j:i+1]
-            elif total > target:
-                break       
-        j += 1
+            tol -= queue.pop(0)
+            tol += l[i]
+            queue.append(l[i])
+            if tol == target: return queue
     
-if __name__ == "__main__":
+if __name__ == "__main__":    
+    nums = [int(n) for n in open("input9.txt", "r").readlines()]
     target = 144381670
-    nums = open("input.txt", "r").readlines()
-    ans = [int[n] for n in findSet(nums, target)]
-    print(min(ans) + max(ans))
+    ans = findSet(nums, target)
+    print(min(ans) + max(ans)) 
