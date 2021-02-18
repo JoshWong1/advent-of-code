@@ -11,9 +11,7 @@ if __name__ == "__main__":
 
    #create list of other tickets
    ts = items[2].split("\n")[1:]
-   tickets = []
-   for s in ts:     
-      tickets.append([int(n) for n in s.split(",")])
+   tickets = [[int(n) for n in s.split(",")] for s in ts]
 
    #create dict rules: key = rule name, value = list of min,max
    rules = {}
