@@ -53,7 +53,7 @@ if __name__ == "__main__":
    #given list of all possible (rule, index) assignments, 
    #start from list of size 1 and work up to find correct assignments
    d2 = {}
-   for i in range(0, 20):
+   for i in range(20):
       for j, item in enumerate(order):
          if item == order2[i]:
             for item2 in item:
