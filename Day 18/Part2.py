@@ -9,7 +9,6 @@ def solve(s, i):
             op = s[i]
         elif s[i] == "(":
             x, i = solve(s, i+1)
-            
             total = applyOp(op, total, x)
         elif s[i] == ")":
             return total, i        
