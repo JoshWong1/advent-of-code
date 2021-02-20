@@ -50,6 +50,6 @@ if __name__ == "__main__":
         
     tol = 0
     for s in l:
-        x = solve(addBrackets(s), 0)
-        tol += x[0]
+        x, _ = solve(addBrackets(s), 0)
+        tol += x
     print(tol)
