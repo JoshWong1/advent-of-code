@@ -20,8 +20,8 @@ if __name__ == "__main__":
             waypoint = rotate(360 - val, waypoint)       
         elif d == "R":
             waypoint = rotate(val, waypoint)
-        else:           
-            coord[0] += waypoint[1] * val
-            coord[1] += waypoint[0] * val
-    
-    print(abs(coord[0]) + abs(coord[1]))      
+        else: 
+            coord[0] += waypoint[0] * val
+            coord[1] += waypoint[1] * val
+            
+    print(abs(coord[0]) + abs(coord[1]))
