@@ -19,7 +19,7 @@ if __name__ == "__main__":
         ingr = ingrs.pop()
         d[alrg] = ingr
         for k in ls:
-            k[1] = k[1] - {ingr}
+            k[1] -= {ingr}
         
     s = [d[key] for key in sorted(d.keys())]        
     print(','.join(s))
