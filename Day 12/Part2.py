@@ -1,6 +1,6 @@
 def rotate(angle, waypoint):
-    n = angle/90
-    for i in range(int(n)):
+    n = angle//90
+    for i in range(n):
         waypoint = [waypoint[1], -waypoint[0]]
     return waypoint
 
@@ -17,8 +17,7 @@ if __name__ == "__main__":
             waypoint[0] += dirs[d][0] * val
             waypoint[1] += dirs[d][1] * val
         elif d == "L":
-            waypoint = rotate(360 - val, waypoint)
-                
+            waypoint = rotate(360 - val, waypoint)       
         elif d == "R":
             waypoint = rotate(val, waypoint)
         else:           
