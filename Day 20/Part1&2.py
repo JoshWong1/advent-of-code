@@ -111,9 +111,8 @@ def solve(tiles, l, k):
     pos = findEmpty(l)    
     if not pos:
         return True
-    row = pos[0]
-    col = pos[1]  
-    
+    row, col = pos
+
     i = 0
     while i < len(tiles): 
         t = tiles[0]
